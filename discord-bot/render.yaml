@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: konosuba-discord-bot
+    runtime: node
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: GROQ_KEY
+        sync: false
+    autoDeploy: false
+    healthCheckPath: /ping
