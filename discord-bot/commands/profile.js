@@ -10,9 +10,14 @@ const fs = require('fs')
 
 // Download an attached or quoted image from a message, returns buffer or null
 async function getImageBuffer(sock, msg) {
-  // Discord: get image from message attachments
-  const attachment = msg.attachments?.first();
-} catch { return null; }
+  try {
+    // Discord: get image from message attachments
+    const attachment = msg.attachments?.first();
+    if (!attachment) return null;
+    const res = await fetch(attachment.url);
+    const arrayBuf = await res.arrayBuffer();
+    return Buffer.from(arrayBuf);
+  } catch { return null; }
 }
 
 async function extractFrame(inputPath, tmpIn, tmpOut) {
