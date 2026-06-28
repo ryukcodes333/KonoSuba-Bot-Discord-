@@ -6,7 +6,6 @@ const mainCmds        = require('./main')
 const adminCmds       = require('./admin')
 const economyCmds     = require('./economy')
 const cardCmds        = require('./cards')
-const gameCmds        = require('./games')
 const pokemonCmds     = require('./pokemon')
 const interactionCmds = require('./interactions')
 const funCmds         = require('./fun')
@@ -364,7 +363,6 @@ async function handleMessage(client, message) {
   if (cardCmds[cmd]) { await cardCmds[cmd](ctx).catch(e => reply(`❌ Error: ${e.message}`)); return }
 
   // Games
-  if (gameCmds[cmd]) { await gameCmds[cmd](ctx).catch(e => reply(`❌ Error: ${e.message}`)); return }
 
   // Pokemon
   if (pokemonCmds[cmd]) { await pokemonCmds[cmd](ctx).catch(e => reply(`❌ Error: ${e.message}`)); return }
