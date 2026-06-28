@@ -2,7 +2,6 @@
 
 async function sendPollResult(sock, jid, name, votes) {
   const lines = votes.map(v => `• ${v.optionName}: ${v.optionVoteCount} vote${v.optionVoteCount !== 1 ? 's' : ''}`).join('\n');
-');
   await sock.sendMessage(jid, { text: `📊 *${name}*
 
 ${lines}` });
