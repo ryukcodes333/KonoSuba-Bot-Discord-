@@ -2381,11 +2381,8 @@ module.exports = {
     try {
       // Discord: WA media download removed
       const buffer = null // Discord: WA sticker download not applicable
-        logger: { level: () => {}, info: () => {}, warn: () => {}, error: () => {} },
-        reuploadRequest: sock.updateMediaMessage,
-      })
       const ms  = loadMS()
-      ms[sender] = { data: buffer.toString('base64'), mime: 'image/webp', setAt: Date.now() }
+      ms[sender] = { data: '', mime: 'image/webp', setAt: Date.now() }
       saveMS(ms)
       await reply(`✅ *MENTION STICKER SET!*\n\nWhen someone tags you, the bot will reply with your sticker!\n\nUse *.delms* to remove it. 🖤`)
     } catch (err) {
