@@ -1,4 +1,4 @@
-# 🌑 Konosuba Discord Bot
+# 🌊 Konosuba Discord Bot
 
 A feature-rich Discord bot ported from WhatsApp — economy, card games, Pokémon, RPG, AI chat, admin tools, and more. Prefix: `.`
 
