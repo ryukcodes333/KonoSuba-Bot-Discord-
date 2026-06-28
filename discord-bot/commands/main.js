@@ -195,7 +195,7 @@ module.exports = {
 
   async info({ msg, reply }) {
     const guild = msg.guild
-    if (!guild) return reply(`🌑 **Konosuba Discord Bot v${BOT_VERSION}**\nPrefix: \`.`\n`)
+    if (!guild) return reply(`🌑 **Konosuba Discord Bot v${BOT_VERSION}**\nPrefix: \`.\`\n`)
     await msg.guild.members.fetch().catch(() => {})
     const memberCount = guild.memberCount
     const botCount = guild.members.cache.filter(m => m.user.bot).size
