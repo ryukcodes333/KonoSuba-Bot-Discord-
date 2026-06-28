@@ -12,13 +12,11 @@ const fs = require('fs')
 async function getImageBuffer(sock, msg) {
   // Discord: get image from message attachments
   const attachment = msg.attachments?.first();
-  if (!attachment) return null;
-  try {
-    const axios = require("axios");
-    const res = await axios.get(attachment.url, { responseType: "arraybuffer", timeout: 20000 });
-    return Buffer.from(res.data);
-  } catch { return null; }
+} catch { return null; }
 }
+
+async function extractFrame(inputPath, tmpIn, tmpOut) {
+  try {
     const frameBuf = fs.readFileSync(tmpOut)
     if (frameBuf && frameBuf.length > 100) return frameBuf
     throw new Error('Frame output is empty.')
