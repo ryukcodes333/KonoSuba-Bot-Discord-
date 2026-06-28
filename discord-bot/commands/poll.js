@@ -1,13 +1,11 @@
 // Discord version: WA message generation removed
 
 async function sendPollResult(sock, jid, name, votes) {
-  const msg = generateWAMessageFromContent(jid, {
-    pollResultSnapshotMessage: {
-      name,
-      pollVotes: votes,
-    },
-  }, {})
-  await sock.relayMessage(jid, msg.message, { messageId: msg.key.id })
+  const lines = votes.map(v => `• ${v.optionName}: ${v.optionVoteCount} vote${v.optionVoteCount !== 1 ? 's' : ''}`).join('
+');
+  await sock.sendMessage(jid, { text: `📊 *${name}*
+
+${lines}` });
 }
 
 const pollCmds = {

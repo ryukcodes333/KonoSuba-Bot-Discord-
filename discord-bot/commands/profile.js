@@ -10,105 +10,15 @@ const fs = require('fs')
 
 // Download an attached or quoted image from a message, returns buffer or null
 async function getImageBuffer(sock, msg) {
-  const imgMsg =
-    msg.message?.imageMessage ||
-    msg.message?.extendedTextMessage?.contextInfo?.quotedMessage?.imageMessage
-
-  if (!imgMsg) return null
-
-  const quoted = msg.message?.extendedTextMessage?.contextInfo?.quotedMessage
-  const targetMsg = quoted
-    ? {
-        message: quoted,
-        key: {
-          remoteJid: msg.key.remoteJid,
-          id: msg.message.extendedTextMessage.contextInfo.stanzaId,
-          participant: msg.message.extendedTextMessage.contextInfo.participant,
-        },
-      }
-    : msg
-
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-// Discord: attachment-based media download not applicable; return null
-    })
+  // Discord: get image from message attachments
+  const attachment = msg.attachments?.first();
+  if (!attachment) return null;
+  try {
+    const axios = require("axios");
+    const res = await axios.get(attachment.url, { responseType: "arraybuffer", timeout: 20000 });
+    return Buffer.from(res.data);
+  } catch { return null; }
+}
     const frameBuf = fs.readFileSync(tmpOut)
     if (frameBuf && frameBuf.length > 100) return frameBuf
     throw new Error('Frame output is empty.')
