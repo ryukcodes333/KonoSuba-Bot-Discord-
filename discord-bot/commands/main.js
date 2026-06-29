@@ -20,16 +20,15 @@ function dateStr() {
 }
 
 module.exports = {
-  async menu({ reply, pushName }) {
+ async menu({ reply, pushName }) {
     const userName = pushName || 'Traveller'
     const menuText =
-      `Hᴇʏʏʏʏʏ ${userName}... ɪ'ᴍ Aǫᴜᴀ ꜰʀᴏᴍ ᴛʜᴇ 𝐊𝚯𝐍𝚯𝐒𝐔𝐁𝚫 ᴄᴏᴍᴜɴɪᴛʏ!\n\n` +
-      `Cʜᴇᴄᴋ ʙᴇʟᴏᴡ ғᴏʀ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs ✦\n` +
-      `> Prefix: **.** (dot)\n\n` +
+      `Hᴇʏʏʏʏʏ ${userName}... ɪ'ᴍ Aǫᴜᴀ ꜰʀᴏᴍ ᴛʜᴇ 𝐊𝚯𝐍𝚯𝐒𝐔𝐁𝚫 ᴄᴏᴍᴍᴜɴɪᴛʏ ɴɪᴄᴇ ᴛᴏ ᴍᴇᴇᴛ ʏᴏᴜ!\n\n` +
+      `Cʜᴇᴄᴋ ʙᴇʟᴏᴡ ғᴏʀ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs ✦\n\n` +
 
       `*⚙️ ADMIN ⚙️*\n` +
+      `┃\n` +
       `┃ ⤷ .kick @user\n` +
-      `┃ ⤷ .ban @user\n` +
       `┃ ⤷ .mute @user\n` +
       `┃ ⤷ .unmute @user\n` +
       `┃ ⤷ .warn @user\n` +
@@ -37,101 +36,270 @@ module.exports = {
       `┃ ⤷ .clearwarns @user\n` +
       `┃ ⤷ .promote @user\n` +
       `┃ ⤷ .demote @user\n` +
+      `┃ ⤷ .ban @user\n` +
+      `┃ ⤷ .unban @user\n` +
       `┃ ⤷ .addmod @user\n` +
       `┃ ⤷ .removemod @user\n` +
-      `┃ ⤷ .lockgroup / .unlockgroup\n` +
+      `┃ ⤷ .lockgroup\n` +
+      `┃ ⤷ .unlockgroup\n` +
+      `┃ ⤷ .setname <name>\n` +
+      `┃ ⤷ .setdesc <description>\n` +
+      `┃ ⤷ .setpp (reply image)\n` +
+      `┃ ⤷ .tagall\n` +
+      `┃ ⤷ .hidetag <message>\n` +
+      `┃ ⤷ .delete (reply msg)\n` +
       `┃ ⤷ .antilink on/off\n` +
       `┃ ⤷ .antispam on/off\n` +
       `┃ ⤷ .welcome on/off\n` +
       `┃ ⤷ .goodbye on/off\n` +
-      `┃ ⤷ .tagall\n` +
+      `┃ ⤷ .autoreply on/off\n` +
       `┃ ⤷ .active\n` +
-      `┃ ⤷ .blacklist add/remove/list\n` +
-      `┃ ⤷ .suspend @user <time> <reason>\n` +
-      `┃ ⤷ .unsuspend @user\n` +
+      `┃ ⤷ .resetlink\n` +
+      `┃ ⤷ .revoke\n` +
+      `┃ ⤷ .invitelink\n` +
+      `┃ ⤷ .stafflist\n` +
+      `┃ ⤷ .myrole\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
       `*💰 ECONOMY 💰*\n` +
+      `┃\n` +
       `┃ ⤷ .balance / .bal\n` +
-      `┃ ⤷ .wallet / .bank\n` +
+      `┃ ⤷ .wallet\n` +
+      `┃ ⤷ .bank\n` +
       `┃ ⤷ .deposit <amount>\n` +
       `┃ ⤷ .withdraw <amount>\n` +
       `┃ ⤷ .pay @user <amount>\n` +
-      `┃ ⤷ .daily / .weekly / .monthly\n` +
-      `┃ ⤷ .work / .dig / .fish / .beg\n` +
-      `┃ ⤷ .crime / .rob @user / .heist\n` +
-      `┃ ⤷ .shop / .buy <item>\n` +
+      `┃ ⤷ .loan <amount>\n` +
+      `┃ ⤷ .repay <amount>\n` +
+      `┃ ⤷ .daily\n` +
+      `┃ ⤷ .fish\n` +
+      `┃ ⤷ .dig\n` +
+      `┃ ⤷ .weekly\n` +
+      `┃ ⤷ .monthly\n` +
+      `┃ ⤷ .work\n` +
+      `┃ ⤷ .beg\n` +
+      `┃ ⤷ .crime\n` +
+      `┃ ⤷ .rob @user\n` +
+      `┃ ⤷ .heist\n` +
+      `┃ ⤷ .market\n` +
+      `┃ ⤷ .buy <item>\n` +
+      `┃ ⤷ .sell <item>\n` +
       `┃ ⤷ .inventory / .inv\n` +
-      `┃ ⤷ .loan <amount> / .repay\n` +
-      `┃ ⤷ .topmoney / .topbank\n` +
+      `┃ ⤷ .use <item>\n` +
+      `┃ ⤷ .gift @user <item>\n` +
+      `┃ ⤷ .topmoney\n` +
+      `┃ ⤷ .topbank\n` +
+      `┃ ⤷ .cooldowns / .cds\n` +
+      `┃ ⤷ .profile / .p\n` +
+      `┃ ⤷ .rank\n` +
+      `┃ ⤷ .xp\n` +
+      `┃ ⤷ .achievements\n` +
+      `┃ ⤷ .quests\n` +
+      `┃ ⤷ .claim\n` +
+      `┃ ⤷ .bonus\n` +
+      `┃ ⤷ .upgrade\n` +
+      `┃ ⤷ .prestige\n` +
+      `┃ ⤷ .bankupgrade\n` +
+      `┃ ⤷ .withdrawall\n` +
+      `┃\n` +
+      `╰━━━━━━━━━━━━━━━━\n\n` +
+
+      `*🎲 GAMBLING 🎲*\n` +
+      `┃\n` +
+      `┃ ⤷ .coinflip <amount>\n` +
+      `┃ ⤷ .slots <amount>\n` +
+      `┃ ⤷ .blackjack <amount>\n` +
+      `┃ ⤷ .roulette <amount>\n` +
+      `┃ ⤷ .dice <amount>\n` +
+      `┃ ⤷ .lottery\n` +
+      `┃ ⤷ .bet <amount>\n` +
+      `┃ ⤷ .highlow <amount>\n` +
+      `┃ ⤷ .crash <amount>\n` +
+      `┃\n` +
+      `╰━━━━━━━━━━━━━━━━\n\n` +
+
+      `*🎉 FUN 🎉*\n` +
+      `┃\n` +
+      `┃ ⤷ .joke\n` +
+      `┃ ⤷ .meme\n` +
+      `┃ ⤷ .quote\n` +
+      `┃ ⤷ .fact\n` +
+      `┃ ⤷ .8ball <question>\n` +
+      `┃ ⤷ .truth\n` +
+      `┃ ⤷ .dare\n` +
+      `┃ ⤷ .ship @user @user\n` +
+      `┃ ⤷ .rate @user\n` +
+      `┃ ⤷ .roast @user\n` +
+      `┃ ⤷ .compliment @user\n` +
+      `┃ ⤷ .pick <option1/option2>\n` +
+      `┃ ⤷ .reverse <text>\n` +
+      `┃ ⤷ .fliptext <text>\n` +
+      `┃ ⤷ .emojify <text>\n` +
+      `┃ ⤷ .rps <rock/paper/scissors>\n` +
+      `┃ ⤷ .wouldyourather\n` +
+      `┃\n` +
+      `╰━━━━━━━━━━━━━━━━\n\n` +
+
+      `*💞 INTERACTIONS 💞*\n` +
+      `┃\n` +
+      `┃ ⤷ .hug @user\n` +
+      `┃ ⤷ .kiss @user\n` +
+      `┃ ⤷ .pat @user\n` +
+      `┃ ⤷ .slap @user\n` +
+      `┃ ⤷ .punch @user\n` +
+      `┃ ⤷ .bite @user\n` +
+      `┃ ⤷ .cuddle @user\n` +
+      `┃ ⤷ .poke @user\n` +
+      `┃ ⤷ .tickle @user\n` +
+      `┃ ⤷ .wave @user\n` +
+      `┃ ⤷ .highfive @user\n` +
+      `┃ ⤷ .stare @user\n` +
+      `┃ ⤷ .blush\n` +
+      `┃ ⤷ .smile\n` +
+      `┃ ⤷ .cry\n` +
+      `┃ ⤷ .laugh\n` +
+      `┃ ⤷ .dance\n` +
+      `┃ ⤷ .angry\n` +
+      `┃ ⤷ .sleep\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
       `*🎮 GAMES 🎮*\n` +
-      `┃ ⤷ .blackjack / .bj\n` +
-      `┃ ⤷ .uno / .unojoin\n` +
-      `┃ ⤷ .chess @user\n` +
-      `┃ ⤷ .trivia / .math\n` +
-      `┃ ⤷ .8ball <question>\n` +
-      `┃ ⤷ .roll / .flip\n` +
-      `┃ ⤷ .slot / .coinflip\n` +
+      `┃\n` +
+      `┃ ⤷ .tictactoe @user\n` +
+      `┃ ⤷ .hangman\n` +
+      `┃ ⤷ .quiz\n` +
+      `┃ ⤷ .trivia\n` +
+      `┃ ⤷ .mathquiz\n` +
+      `┃ ⤷ .wordgame\n` +
+      `┃ ⤷ .riddle\n` +
+      `┃ ⤷ .guessnumber\n` +
+      `┃ ⤷ .fasttype\n` +
+      `┃ ⤷ .minesweeper\n` +
+      `┃ ⤷ .snake\n` +
+      `┃ ⤷ .2048\n` +
+      `┃ ⤷ .duel @user\n` +
+      `┃ ⤷ .arcade\n` +
+      `┃ ⤷ .leaderboard\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
-      `*🃏 CARDS 🃏*\n` +
-      `┃ ⤷ .cards / .mycards\n` +
-      `┃ ⤷ .draw / .sell <card>\n` +
-      `┃ ⤷ .trade @user <card>\n` +
-      `┃ ⤷ .deck / .setdeck\n` +
-      `╰━━━━━━━━━━━━━━━━\n\n` +
-
-      `*🐾 POKEMON 🐾*\n` +
-      `┃ ⤷ .pokemon / .poke\n` +
-      `┃ ⤷ .catch / .release\n` +
-      `┃ ⤷ .party / .heal\n` +
+      `*🐾 POKÉMONS 🐾*\n` +
+      `┃\n` +
+      `┃ ⤷ .pokemon\n` +
+      `┃ ⤷ .party\n` +
+      `┃ ⤷ .pc\n` +
+      `┃ ⤷ .starter\n` +
+      `┃ ⤷ .catch\n` +
+      `┃ ⤷ .hunt\n` +
       `┃ ⤷ .battle @user\n` +
+      `┃ ⤷ .heal\n` +
+      `┃ ⤷ .evolve <pokemon>\n` +
+      `┃ ⤷ .release <pokemon>\n` +
+      `┃ ⤷ .rename <pokemon> <name>\n` +
+      `┃ ⤷ .buddy <pokemon>\n` +
+      `┃ ⤷ .feed <pokemon>\n` +
+      `┃ ⤷ .train <pokemon>\n` +
+      `┃ ⤷ .moves <pokemon>\n` +
+      `┃ ⤷ .pokeshop\n` +
+      `┃\n` +
+      `╰━━━━━━━━━━━━━━━━\n\n` +
+
+      `*⬇️ DOWNLOADER ⬇️*\n` +
+      `┃\n` +
+      `┃ ⤷ .play <song>\n` +
+      `┃ ⤷ .ytmp3 <link>\n` +
+      `┃ ⤷ .ytmp4 <link>\n` +
+      `┃ ⤷ .tiktok <link>\n` +
+      `┃ ⤷ .instagram <link>\n` +
+      `┃ ⤷ .facebook <link>\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
       `*⚔️ RPG ⚔️*\n` +
-      `┃ ⤷ .rpg / .class\n` +
-      `┃ ⤷ .dungeon / .raid\n` +
-      `┃ ⤷ .quest / .skills\n` +
+      `┃\n` +
+      `┃ ⤷ .rpg\n` +
+      `┃ ⤷ .stats\n` +
+      `┃ ⤷ .hunt\n` +
+      `┃ ⤷ .boss\n` +
+      `┃ ⤷ .raid\n` +
+      `┃ ⤷ .dungeon\n` +
+      `┃ ⤷ .quest\n` +
+      `┃ ⤷ .equip <item>\n` +
+      `┃ ⤷ .unequip <item>\n` +
+      `┃ ⤷ .skills\n` +
+      `┃ ⤷ .craft <item>\n` +
+      `┃ ⤷ .forge\n` +
+      `┃ ⤷ .shop\n` +
+      `┃ ⤷ .prestige\n` +
+      `┃ ⤷ .rparty\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
-      `*🤖 AI 🤖*\n` +
-      `┃ ⤷ .ai <prompt>\n` +
-      `┃ ⤷ .gpt / .gemini / .llama\n` +
-      `┃ ⤷ .flux <prompt> (image gen)\n` +
-      `┃ ⤷ Mention me or say "aqua"/"alpha" to chat!\n` +
+      `*🏰 GUILD 🏰*\n` +
+      `┃\n` +
+      `┃ ⤷ .createguild <name>\n` +
+      `┃ ⤷ .guild\n` +
+      `┃ ⤷ .guildinfo\n` +
+      `┃ ⤷ .joinguild <name>\n` +
+      `┃ ⤷ .leaveguild\n` +
+      `┃ ⤷ .invite @user\n` +
+      `┃ ⤷ .kickmember @user\n` +
+      `┃ ⤷ .guildtop\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
-      `*😂 FUN 😂*\n` +
-      `┃ ⤷ .gay / .ship / .pp\n` +
-      `┃ ⤷ .fact / .joke / .meme\n` +
-      `┃ ⤷ .afk <reason>\n` +
-      `┃ ⤷ .poll <question>\n` +
+      `*🎴 CARDS 🎴*\n` +
+      `┃\n` +
+      `┃ ⤷ .collection / .coll\n` +
+      `┃ ⤷ .deck\n` +
+      `┃ ⤷ .card\n` +
+      `┃ ⤷ .ci <name> [tier]\n` +
+      `┃ ⤷ .ss <name>\n` +
+      `┃ ⤷ .fs <series> [tier]\n` +
+      `┃ ⤷ .cardlb\n` +
+      `┃ ⤷ .get <card_id>\n` +
+      `┃ ⤷ .stardust\n` +
+      `┃ ⤷ .tc @user\n` +
+      `┃ ⤷ .dc <number>\n` +
+      `┃ ⤷ .cg <number>\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
-      `*👤 PROFILE 👤*\n` +
-      `┃ ⤷ .profile / .p\n` +
-      `┃ ⤷ .register / .bio <text>\n` +
-      `┃ ⤷ .xp / .level\n` +
+      `*🔥 VIBE 🔥*\n` +
+      `┃\n` +
+      `┃ ⤷ .vibe\n` +
+      `┃ ⤷ .vibecheck\n` +
+      `┃ ⤷ .energy\n` +
+      `┃ ⤷ .aura\n` +
+      `┃ ⤷ .rizz\n` +
+      `┃ ⤷ .sigma\n` +
+      `┃ ⤷ .ratio\n` +
+      `┃ ⤷ .npc\n` +
+      `┃ ⤷ .cope\n` +
+      `┃ ⤷ .mood\n` +
+      `┃ ⤷ .lowkey\n` +
+      `┃ ⤷ .slay\n` +
+      `┃ ⤷ .ghost\n` +
+      `┃ ⤷ .toxic\n` +
+      `┃ ⤷ .real\n` +
+      `┃ ⤷ .sus\n` +
+      `┃ ⤷ .caught\n` +
+      `┃ ⤷ .clout\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
-      `*🏰 GUILDS 🏰*\n` +
-      `┃ ⤷ .guild create <name>\n` +
-      `┃ ⤷ .guild join / .guild leave\n` +
-      `┃ ⤷ .guild info / .guild top\n` +
-      `╰━━━━━━━━━━━━━━━━\n\n` +
-
-      `*🎟️ LOTTERY 🎟️*\n` +
-      `┃ ⤷ .lottery / .lotteryjoin\n` +
-      `┃ ⤷ .lotterystatus / .lotterydraw\n` +
-      `╰━━━━━━━━━━━━━━━━\n\n` +
-
-      `*🛠️ UTILITY 🛠️*\n` +
-      `┃ ⤷ .translate <lang> <text>\n` +
-      `┃ ⤷ .weather <city>\n` +
-      `┃ ⤷ .wiki <query>\n` +
-      `┃ ⤷ .myid / .id\n` +
+      `*📱 MEDIA 📱*\n` +
+      `┃\n` +
+      `┃ ⤷ .upscale\n` +
+      `┃ ⤷ .enhance\n` +
+      `┃ ⤷ .remini\n` +
+      `┃ ⤷ .removebg\n` +
+      `┃ ⤷ .night\n` +
+      `┃ ⤷ .sunset\n` +
+      `┃ ⤷ .rain\n` +
+      `┃\n` +
       `╰━━━━━━━━━━━━━━━━\n\n` +
 
       `> Bot v${BOT_VERSION} | Konosuba Community`
