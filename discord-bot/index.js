@@ -107,6 +107,9 @@ if (!TOKEN) {
 }
 
 console.log('🌑 Konosuba Bot starting…')
+client.on('debug', msg => { if (msg.includes('connect') || msg.includes('gateway') || msg.includes('identify') || msg.includes('Error')) console.log('[D]', msg) })
+client.on('warn', msg => console.warn('[WARN]', msg))
+client.on('error', err => console.error('[ERR]', err.message))
 client.login(TOKEN).catch(err => {
   console.error('Fatal login error:', err.message)
   process.exit(1)
